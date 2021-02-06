@@ -55,11 +55,12 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
 
         $event->data['hasdata'] = true; 
 
-        $path = __DIR__ . '/templates/schema';
+        $path = __DIR__ . '/assets/templates/schema';
         $loader = new FilesystemLoader($path);
         $twig = new Environment($loader, [
-            'debug' => $conf['allowdebug'],
+            'debug' => true,
         ]);
+        $twig->addExtension(new \Twig\Extension\DebugExtension());
 
         foreach ($data as $field) {
             $idx = strlen($R->doc);

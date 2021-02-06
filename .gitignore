@@ -1,4 +1,2 @@
 vendor/
-templates/schema/*
-!templates/schema/default.twig.example
-*.less
+assets/*
