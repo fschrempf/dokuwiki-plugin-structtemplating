@@ -2,6 +2,6 @@ base   structtemplating
 author Frieder Schrempf
 email  dev@fris.de
 date   2021-02-02
-name   structtemplating plugin
+name   Struct Templating Plugin
 desc   Use twig templates for custom struct data rendering
 url    https://github.com/fschrempf/dokuwiki-plugin-structtemplating

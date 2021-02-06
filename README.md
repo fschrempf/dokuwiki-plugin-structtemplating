@@ -1,6 +1,6 @@
 # Struct Templating Plugin for DokuWiki
 
-Use twig templates for custom struct data rendering
+Use twig templates for custom struct data rendering.
 
 ## Installing
 
@@ -16,7 +16,7 @@ on how to install plugins in DokuWiki.
 After installing the plugin, an admin can add twig template files in the
 `lib/plugin/structtemplating/templates/schema` directory on the server.
 
-Currently only templates for schema page data is supported. The filename of
+Currently only templates for schema page data are supported. The filename of
 the template file must be `<schema>.twig`.
 
 You can access properties of the schema through the `schema` variable and
