@@ -46,6 +46,7 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
     public function handle_struct_render_schema_data(Doku_Event $event, $param)
     {
         $schemadata = $event->data['schemadata'];
+        $meta = $event->data['meta'];
         $R = $event->data['R'];
 
         $schemadata->optionSkipEmpty(true);
@@ -74,7 +75,8 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
                 $schemadata->getSchema()->getTable() . '.twig',
                 [
                     'schema' => $schemadata->getSchema(),
-                    'data' => $data
+                    'data' => $data,
+                    'meta' => $meta
                 ]
             );
             $R->doc .= $twigmarkup;
