@@ -47,7 +47,8 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
     {
         $schemadata = $event->data['schemadata'];
         $meta = $event->data['meta'];
-        $R = $event->data['R'];
+        $renderer = $event->data['renderer'];
+        $format = $event->data['format'];
 
         $schemadata->optionSkipEmpty(true);
         $data = $schemadata->getData();
@@ -64,10 +65,10 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
         $twig->addExtension(new \Twig\Extension\DebugExtension());
 
         foreach ($data as $field) {
-            $idx = strlen($R->doc);
-            $field->render($R, $mode);
-            $field->rendered = substr($R->doc, $idx);
-            $R->doc = substr($R->doc, 0, $idx);
+            $idx = strlen($renderer->doc);
+            $field->render($renderer, $format);
+            $field->rendered = substr($renderer->doc, $idx);
+            $renderer->doc = substr($renderer->doc, 0, $idx);
         }
 
         try {
@@ -79,7 +80,7 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
                     'meta' => $meta
                 ]
             );
-            $R->doc .= $twigmarkup;
+            $renderer->doc .= $twigmarkup;
         } catch (Exception $e) {
             return;
         }
