@@ -76,6 +76,7 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
             'debug' => true,
         ]);
         $twig->addExtension(new \Twig\Extension\DebugExtension());
+        $twig->addExtension(new \MikeAlmond\TwigColorExtension\ColorExtension());
 
         foreach ($data as $field) {
             $idx = strlen($renderer->doc);
@@ -135,6 +136,7 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
             'debug' => true,
         ]);
         $twig->addExtension(new \Twig\Extension\DebugExtension());
+        $twig->addExtension(new \MikeAlmond\TwigColorExtension\ColorExtension());
 
         /*
          * If the data covers a single schema, we look for a matching

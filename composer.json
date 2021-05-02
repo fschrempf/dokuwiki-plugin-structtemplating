@@ -1,5 +1,6 @@
 {
     "require": {
-        "twig/twig": "^3.2"
+        "twig/twig": "^3.2",
+        "mikealmond/twig-color-extension": "^0.0.7"
     }
 }
