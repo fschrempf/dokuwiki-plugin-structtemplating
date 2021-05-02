@@ -1,3 +1,3 @@
 jQuery(function() {
-    /* DOKUWIKI:include assets/script/script.js */
+    /* DOKUWIKI:include_once assets/script/script.js */
 });
