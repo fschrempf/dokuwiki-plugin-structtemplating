@@ -120,6 +120,7 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
         $table = $event->data['table'];
         $search = $event->data['search'];
         $data = $event->data['data'];
+        $format = $event->data['format'];
 
         $path = array(
             __DIR__ . '/assets/templates/aggregation',
