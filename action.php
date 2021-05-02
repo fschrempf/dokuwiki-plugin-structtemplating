@@ -61,8 +61,17 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
 
         $event->data['hasdata'] = true; 
 
-        $path = __DIR__ . '/assets/templates/schema';
-        $loader = new FilesystemLoader($path);
+        $path = array(
+            __DIR__ . '/assets/templates/schema',
+            __DIR__ . '/assets/templates/common',
+        );
+
+        try {
+            $loader = new FilesystemLoader($path);
+        } catch (Exception $e) {
+            return;
+        }
+
         $twig = new Environment($loader, [
             'debug' => true,
         ]);
@@ -111,8 +120,17 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
         $search = $event->data['search'];
         $data = $event->data['data'];
 
-        $path = __DIR__ . '/assets/templates/aggregation';
-        $loader = new FilesystemLoader($path);
+        $path = array(
+            __DIR__ . '/assets/templates/aggregation',
+            __DIR__ . '/assets/templates/common',
+        );
+
+        try {
+            $loader = new FilesystemLoader($path);
+        } catch (Exception $e) {
+            return;
+        }
+
         $twig = new Environment($loader, [
             'debug' => true,
         ]);
@@ -130,6 +148,10 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
 
         $templates[] = $table->getID() . '.twig';
 
+        /*
+         * For each field in the table we want to make sure that we
+         * have the rendered value available in the template.
+         */
         foreach ($data as $row) {
             foreach ($row as $field) {
                 $idx = strlen($renderer->doc);
@@ -139,7 +161,6 @@ class action_plugin_structtemplating extends DokuWiki_Action_Plugin
             }
         }
 
-        $rendered = false;
         foreach ($templates as $template) {
             try {
                 $twigmarkup = $twig->render(
